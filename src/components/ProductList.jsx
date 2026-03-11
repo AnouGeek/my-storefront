@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ProductCard from "./ProductCard";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -10,6 +11,7 @@ export default function ProductList() {
       try {
         const response = await fetch(`https://fakestoreapi.com/products`);
         const data = await response.json();
+        // console.log(data);
         setProducts(data);
       } catch (error) {
         setError(error.message);
@@ -22,9 +24,11 @@ export default function ProductList() {
 
   return (
     <div className="p-4">
-      {products.map((product) => (
-        <p key={product.id}>{product.title}</p>
-      ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
       {isLoading && <div>Loading products...</div>}
       {error && <div>{error}</div>}
       <h2>ProductList</h2>
