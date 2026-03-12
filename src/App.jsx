@@ -19,7 +19,7 @@ function App() {
         {currentView === "home" ? (
           <ProductList addToCart={addToCart} />
         ) : (
-          <Cart />
+          <Cart cart={cart} />
         )}
       </main>
       <Footer />
