@@ -1,4 +1,5 @@
 export default function Header({ onNavigate, cart }) {
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   return (
     <header className="bg-gray-800 text-white p-4 flex justify-between">
       <button
@@ -8,7 +9,7 @@ export default function Header({ onNavigate, cart }) {
         Shop
       </button>
       <button onClick={() => onNavigate("cart")} className="cursor-pointer">
-        Cart ({cart.length})
+        Cart ({totalItems})
       </button>
     </header>
   );
