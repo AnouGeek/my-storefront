@@ -24,6 +24,10 @@ function App() {
     }
   };
 
+  const removeFromCart = (product) => {
+    setCart(cart.filter((item) => item.id !== product.id));
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header onNavigate={setCurrentView} cart={cart} />
@@ -31,7 +35,7 @@ function App() {
         {currentView === "home" ? (
           <ProductList addToCart={addToCart} />
         ) : (
-          <Cart cart={cart} />
+          <Cart cart={cart} removeFromCart={removeFromCart} />
         )}
       </main>
       <Footer />
