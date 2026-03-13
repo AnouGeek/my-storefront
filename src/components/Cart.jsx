@@ -1,4 +1,9 @@
-export default function Cart({ cart, removeFromCart }) {
+export default function Cart({
+  cart,
+  removeFromCart,
+  decreaseQuantity,
+  addToCart,
+}) {
   const total = cart.reduce(
     (accumulator, currentValue) =>
       accumulator + currentValue.price * currentValue.quantity,
@@ -21,7 +26,23 @@ export default function Cart({ cart, removeFromCart }) {
               <span className="flex-1 font-semibold truncate text-pink-400">
                 {product.title}
               </span>
-              <span className="text-green-500 w-12">x{product.quantity}</span>
+              <div className="flex justify-between item-center mr-4 gap-2">
+                <button
+                  onClick={() => decreaseQuantity(product)}
+                  className="cursor-pointer"
+                >
+                  ➖
+                </button>
+                <span className="text-green-500 text-lg">
+                  x{product.quantity}
+                </span>
+                <button
+                  onClick={() => addToCart(product)}
+                  className="cursor-pointer"
+                >
+                  ➕
+                </button>
+              </div>
               <span className="whitespace-nowrap font-bold w-16">
                 {product.price} €
               </span>

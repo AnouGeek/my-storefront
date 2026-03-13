@@ -9,7 +9,9 @@ export default function ProductCard({ product, addToCart }) {
       <span className="truncate font-semibold text-center text-pink-400">
         {product.title}
       </span>
-      <span className="text-center font-bold">{product.price} €</span>
+      <span className="text-center font-bold">
+        {Number(product.price).toFixed(2)} €
+      </span>
       <button
         onClick={() => addToCart(product)}
         className="bg-blue-600 hover:bg-blue-500 text-gray-50 py-2 rounded-xl mt-auto cursor-pointer"
