@@ -35,7 +35,6 @@ export default function ProductList({ addToCart }) {
       </div>
       {isLoading && <div>Loading products...</div>}
       {error && <div>{error}</div>}
-      <h2>ProductList</h2>
     </div>
   );
 }
